@@ -1,0 +1,20 @@
+{
+  "name": "adapt-contrib-hotgraphic",
+  "version": "10.0.0",
+  "framework": ">=5.19.1",
+  "homepage": "https://github.com/wtechsas/adapt-contrib-hotgraphic",
+  "bugs": "https://github.com/wtechsas/adapt-contrib-hotgraphic/issues",
+  "component" : "hotgraphic",
+  "targetAttribute": "_hotgraphic",
+  "displayName" : "Gráfico con marcadores",
+  "description": "Un componente que permite a un usuario hacer clic en pines sobre una imagen para mostrar más detalles en una ventana emergente",
+  "main": "/js/adapt-contrib-hotgraphic.js",
+  "keywords": [
+    "adapt-plugin",
+    "adapt-component"
+  ],
+  "pluginDependencies": {
+    "adapt-contrib-narrative": ">=6.1"
+  },
+  "license": "GPL-3.0"
+}

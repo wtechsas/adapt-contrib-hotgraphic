@@ -1,0 +1,325 @@
+{
+  "type": "object",
+  "$schema": "http://json-schema.org/draft-04/schema",
+  "id": "http://jsonschema.net",
+  "$ref": "http://localhost/plugins/content/component/model.schema",
+  "globals": {
+    "ariaRegion": {
+      "type": "string",
+      "required": true,
+      "default": "Imagen con áreas seleccionables. Seleccione cada botón para mostrar más información.",
+      "inputType": "Text",
+      "title": "Etiqueta Aria",
+      "validators": [],
+      "translatable": true
+    },
+    "popupPagination": {
+      "type": "string",
+      "required": true,
+      "default": "{{itemNumber}} / {{totalItems}}",
+      "inputType": "Text",
+      "title": "Paginación emergente",
+      "validators": [],
+      "help": "Esta es la etiqueta aria para cada artículo. Usar {{itemNumber}} and {{totalItems}} en su texto para decirle al usuario qué elemento está viendo y cuántos elementos hay en total.",
+      "translatable": true
+    }
+  },
+  "properties": {
+    "_supportedLayout": {
+      "type": "string",
+      "required": true,
+      "enum": ["full-width", "half-width", "both"],
+      "default": "full-width",
+      "editorOnly": true
+    },
+    "instruction": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "title": "Texto de instrucciones",
+      "inputType": "Text",
+      "validators": [],
+      "translatable": true
+    },
+    "_setCompletionOn": {
+      "type": "string",
+      "required": false,
+      "default": "allItems",
+      "title": "Establecer su finalización en:",
+      "enum": ["inview", "allItems"],
+      "inputType": {
+        "type": "Select",
+        "options": [{"val": "inview", "label": "ver el componente"}, {"val": "allItems", "label": "todos los elementos"}]
+      },
+      "validators": [],
+      "help": "Si la finalización se basa en que el alumno haya visto todos los elementos, o simplemente haya visto el componente"
+    },
+    "_graphic": {
+      "type": "object",
+      "required": false,
+      "title": "Imagen principal",
+      "properties": {
+        "src": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Imagen",
+          "inputType": "Asset:image",
+          "validators": [],
+          "help": "Esta es la imagen que aparece detrás de los pines."
+        },
+        "alt": {
+          "type": "string",
+          "required": false,
+          "title": "Texto alternativo",
+          "default": "",
+          "inputType": "Text",
+          "validators": [],
+          "help": "Una descripción de la imagen; requerido cuando tiene un significado que debe transmitirse al alumno. Para imágenes 'decorativas', déjelo en blanco.",
+          "translatable": true
+        },
+        "attribution": {
+          "type": "string",
+          "required": false,
+          "default": "",
+          "title": "Descripción de la imagen",
+          "inputType": "Text",
+          "validators": [],
+          "help": "Texto que se mostrará superpuesto en la parte inferior de la imagen",
+          "translatable": true
+        }
+      }
+    },
+    "mobileBody": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "title": "Contenido para dispositivos móviles",
+      "inputType": "TextArea",
+      "validators": [],
+      "help": "Este cuerpo de texto se muestra en los dispositivos móviles cuando este componente se convierte en una narrativa",
+      "translatable": true
+    },
+    "mobileInstruction": {
+      "type": "string",
+      "required": false,
+      "default": "",
+      "title": "Texto de instrucción para dispositivos móviles",
+      "inputType": "TextArea",
+      "validators": [],
+      "help": "Este texto de instrucciones se muestra en los dispositivos móviles cuando este componente se convierte en una Narrativa",
+      "translatable": true
+    },
+    "_isMobileTextBelowImage": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "Mover el área de texto debajo de la imagen en el dispositivo móvil",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Cuando este componente se muestra en un dispositivo móvil, se convierte en una narrativa. Si marca esta casilla, el contenido de texto de cada etapa se coloca debajo de la imagen. La Narrativa no usará el diseño \"strapline\" predeterminado."
+    },
+    "_hidePagination": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "title": "Ocultar progreso y paginación",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Si está habilitado, el indicador de progreso y los enlaces anterior y siguiente no se mostrarán en la barra de herramientas emergente"
+    },
+    "_canCycleThroughPagination": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "title": "Recorrer la paginación de elementos",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Si está habilitado, los botones de navegación emergentes recorrerán continuamente los elementos emergentes (es decir, al hacer clic en Siguiente mientras se encuentra en el último elemento, se mostrará el primero)."
+    },
+    "_isNarrativeOnMobile": {
+      "type": "boolean",
+      "required": true,
+      "default": true,
+      "title": "¿Renderizar como narrativa en el móvil?",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Si está deshabilitado, el componente renderizará una versión reducida de 'escritorio' (pins sobre imagen/mosaicos) del componente en la vista 'móvil' en lugar de ser reemplazada por una interacción Narrativa."
+    },
+    "_useNumberedPins": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "title": "Usa pines numerados",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Si está habilitado, los iconos de pin se reemplazarán con el número de artículo. Útil si desea que los pines se visiten en un orden establecido o muestre los pasos de un proceso."
+    },
+    "_useGraphicsAsPins": {
+      "type": "boolean",
+      "required": true,
+      "default": false,
+      "title": "Usa gráficos como pines",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Si está habilitado, el gráfico principal se ocultará y los pines se mostrarán como imágenes que se pueden colocar usando clases"
+    },
+    "_isRound": {
+      "type": "boolean",
+      "required": false,
+      "default": false,
+      "title": "¿La imagen del artículo debe ser redonda?",
+      "inputType": "Checkbox",
+      "validators": [],
+      "help": "Si está habilitado, se aplicará un radio de borde del 50 % a las imágenes emergentes de elementos."
+    },
+    "_items": {
+      "type": "array",
+      "required": true,
+      "title": "Pines del gráfico",
+      "items": {
+        "type": "object",
+        "required": true,
+        "properties": {
+          "title": {
+            "type": "string",
+            "required": true,
+            "default": "",
+            "title": "Titúlo de la ventana emergente",
+            "inputType": "Text",
+            "validators": [],
+            "help": "Título que se muestra en la ventana emergente",
+            "translatable": true
+          },
+          "_ariaLevel": {
+            "type": "number",
+            "required": true,
+            "default": 0,
+            "title": "Nivel de Aria",
+            "inputType": "Number",
+            "validators": ["required", "number"],
+            "help": "Nivel ARIA para asignar al título emergente. Deje establecido en 0 para establecer de forma predeterminada el nivel Notificar ARIA (establecido a través de la sección Accesibilidad de la configuración del curso)."
+          },
+          "body": {
+            "type": "string",
+            "required": true,
+            "default": "",
+            "title": "Contenido",
+            "inputType": "TextArea",
+            "validators": ["required"],
+            "help": "Texto del cuerpo que se muestra en la ventana emergente",
+            "translatable": true
+          },
+          "strapline": {
+            "type": "string",
+            "required": true,
+            "default": "",
+            "title": "Eslogan",
+            "inputType": "Text",
+            "validators": ["required"],
+            "help": "Eslogan: solo se muestra en la versión móvil",
+            "translatable": true
+          },
+          "_graphic": {
+            "type": "object",
+            "required": true,
+            "title": "Imagen de la ventana emergente",
+            "properties": {
+              "src": {
+                "type": "string",
+                "required": true,
+                "default": "",
+                "title": "Imagen",
+                "inputType": "Asset:image",
+                "validators": ["required"],
+                "help": "Imagen que se mostrará en una ventana emergente cuando se seleccione este elemento."
+              },
+              "alt": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "title": "Texto alternativo",
+                "inputType": "Text",
+                "validators": [],
+                "help": "Una descripción de la imagen; requerido cuando tiene un significado que debe transmitirse al alumno. Para imágenes 'decorativas', déjelo en blanco.",
+                "translatable": true
+              },
+              "attribution": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "title": "Descripción de la imagen",
+                "inputType": "Text",
+                "validators": [],
+                "help": "Texto que se mostrará como una descripción para la imagen emergente",
+                "translatable": true
+              },
+              "_classes": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "title": "Incluir clases para imagenes",
+                "inputType": "Text",
+                "validators": [],
+                "help": "Le permite especificar clases de CSS personalizadas para que se apliquen al pin del componente, alternativamente, al icono de punto de acceso cuando _useGraphicsAsPins se establece en verdadero"
+              }
+            }
+          },
+          "_pin": {
+            "type": "object",
+            "required": false,
+            "title": "Pin",
+            "properties": {
+              "src": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "title": "Imagen del pin",
+                "inputType": "Asset:image",
+                "validators": [] ,
+                "help": "Esta es la imagen del pin, déjelo en blanco por defecto"
+              },
+              "alt": {
+                "type": "string",
+                "required": false,
+                "default": "",
+                "title": "Texto alternativo",
+                "inputType": "Text",
+                "validators": [],
+                "help": "Una descripción de la imagen; requerido cuando tiene un significado que debe transmitirse al alumno. Para imágenes 'decorativas', déjelo en blanco.",
+                "translatable": true
+              }
+            }
+          },
+          "_classes": {
+            "type": "string",
+            "required": false,
+            "default": "",
+            "title": "Incluir clases en componentes emergentes",
+            "inputType": "Text",
+            "validators": [],
+            "help": "Le permite especificar clases de CSS personalizadas que se aplicarán al elemento emergente. Las clases admitidas son 'align-image-left', 'hide-desktop-image' y 'hide-popup-image', que alinea la imagen del elemento a la izquierda, oculta la imagen emergente en la vista de escritorio y oculta la ventana emergente. Imagen para todos los tamaños de pantalla respectivamente."
+          },
+          "_left": {
+            "type": "number",
+            "required": true,
+            "default": 0,
+            "title": "Posición del pasador - Izquierda",
+            "inputType": "Number",
+            "validators": ["required", "number"],
+            "help": "Posición izquierda del pasador"
+          },
+          "_top": {
+            "type": "number",
+            "required": true,
+            "default": 0,
+            "title": "Posición del pasador: superior",
+            "inputType": "Number",
+            "validators": ["required", "number"],
+            "help": "Posición superior del pasador"
+          }
+        }
+      }
+    }
+  }
+}
