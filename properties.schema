@@ -198,7 +198,7 @@
             "title": "Nivel de Aria",
             "inputType": "Number",
             "validators": ["required", "number"],
-            "help": "Nivel ARIA para asignar al título emergente. Deje establecido en 0 para establecer de forma predeterminada el nivel Notificar ARIA (establecido a través de la sección Accesibilidad de la configuración del curso)."
+            "help": "Nivel ARIA para asignar al título emergente. Deje establecido en 0 para establecer de forma predeterminada el nivel Notificar ARIA (establecido a través de la sección Accesibilidad de la configuración del Recurso)."
           },
           "body": {
             "type": "string",
